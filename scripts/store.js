@@ -7,7 +7,8 @@ const store = (function () {
         { id: cuid(), name: 'apples', checked: false },
         { id: cuid(), name: 'oranges', checked: false },
         { id: cuid(), name: 'milk', checked: true },
-        { id: cuid(), name: 'bread', checked: false }
+        { id: cuid(), name: 'bread', checked: false },
+        
     ];
     const hideCheckedItems = false;
     const searchTerm = '';
@@ -46,5 +47,15 @@ const store = (function () {
         items.splice(index, 1);
     };
 
-    return {items, hideCheckedItems, searchTerm, findById, addItem, findAndToggleChecked, findAndUpdateName, findAndDelete};
+    const toggleCheckedFilter = function(){
+        this.hideCheckedItems = !this.hideCheckedItems;
+    }
+
+    const setSearchTerm = function(val){
+        this.searchTerm = val;
+    }
+
+    
+
+    return {items, hideCheckedItems, searchTerm, findById, addItem, findAndToggleChecked, findAndUpdateName, findAndDelete, toggleCheckedFilter, setSearchTerm};
 }());
