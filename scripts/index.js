@@ -4,13 +4,16 @@
 // eslint-disable-next-line no-unused-vars
 $(document).ready(function() {
   shoppingList.bindEventListeners();
-  shoppingList.render();
   
+  const itemNames = [ '', 'apples', 'pears' ];
+  itemNames.forEach(name => {
+  try {
+    Item.validateName(name);
+    store.items.push(Item.create(name));
+  } catch(error) {
+    console.log('Cannot add item: ' + error.message);
+  }
 });
-<<<<<<< HEAD
 shoppingList.render();
+});
 
-
-=======
-shoppingList.render();
->>>>>>> 4a1de9311f537c4d709f702e18e7204fd6ba3a18
