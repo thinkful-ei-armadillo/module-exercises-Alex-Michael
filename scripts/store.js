@@ -14,14 +14,14 @@ const store = (function () {
     const searchTerm = '';
 
     const findById = function(id) {
-        return items.find(item => id === item.id);
+        return this.items.find(item => id === item.id);
     };
 
     const addItem = function(name) {
         try {
             Item.validateName(name);
             const item = Item.create(name);
-            items.push(item);
+            this.items.push(item);
         } catch(error) {
             console.log(`Cannot add item: ${error.message}`);
         }
